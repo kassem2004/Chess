@@ -143,8 +143,29 @@ public class ChessBoard extends JFrame {
         }
     }
 
+    private void flipBoard(){
+        for(int i = 0; i < BOARD_SIZE/2; i++){
+            for(int j = 0; j < BOARD_SIZE; j++){
+                Piece tmp = board[i][j];
+                board[i][j] = board[(BOARD_SIZE - 1) - i][j];
+                board[(BOARD_SIZE - 1) - i][j] = tmp;
+
+                //update the coordinate attributes of the pieces
+                if (board[i][j] != null) {
+                    board[i][j].setX(i);
+                    board[i][j].setY(j);
+                }
+                if (board[(BOARD_SIZE - 1) - i][j] != null) {
+                    board[(BOARD_SIZE - 1) - i][j].setX((BOARD_SIZE - 1) - i);
+                    board[(BOARD_SIZE - 1) - i][j].setY(j);
+                }
+            }
+        }
+    }
+
     private void refreshBoardGUI() {
         getContentPane().removeAll();
+        flipBoard();
         initializeBoardGUI();
         revalidate();
         repaint();
