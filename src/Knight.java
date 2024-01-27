@@ -20,9 +20,4 @@ public class Knight extends Piece{
             return false;
         }
     }
-
-    @Override
-    public void capture(Piece eatPiece) {
-
-    }
 }

@@ -126,13 +126,23 @@ public class ChessBoard extends JFrame {
         } else {
             // If a piece is already selected, check if the destination is a valid move
             if (selectedPiece.isValidMove(board, row, col)) {
-                // Perform the move and update the board
-                board[selectedPiece.getX()][selectedPiece.getY()] = null; // Clear the source position
-                board[row][col] = selectedPiece; // Move the piece to the destination
-                selectedPiece.setX(row); // Update the piece's position
-                selectedPiece.setY(col);
+                // Temporarily move the piece to check for discovered check
+                Piece originalPiece = board[row][col];
+                board[row][col] = selectedPiece;
+                board[selectedPiece.getX()][selectedPiece.getY()] = null;
 
-                refreshBoardGUI();
+                // Check for discovered check
+                if (!selectedPiece.discoveredCheck(board, row, col)) {
+                    // Move is valid, update the board
+                    selectedPiece.setX(row);
+                    selectedPiece.setY(col);
+                    refreshBoardGUI();
+                } else {
+                    // Move leads to discovered check, revert the changes
+                    System.out.println("Move leads to discovered check for " + selectedPiece.getClass().getSimpleName() + " to (" + row + ", " + col + ")");
+                    board[selectedPiece.getX()][selectedPiece.getY()] = selectedPiece;
+                    board[row][col] = originalPiece;
+                }
             } else {
                 System.out.println("Invalid move for " + selectedPiece.getClass().getSimpleName() + " to (" + row + ", " + col + ")");
             }
@@ -140,6 +150,7 @@ public class ChessBoard extends JFrame {
             selectedPiece = null;
         }
     }
+
 
     private void flipBoard(){
         for(int i = 0; i < BOARD_SIZE/2; i++){

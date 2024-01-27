@@ -31,11 +31,6 @@ public class Pawn extends Piece {
         }
     }
 
-    @Override
-    public void capture(Piece eatPiece) {
-
-    }
-
     public void setHasMoved() {
         this.hasMoved = true;
     }

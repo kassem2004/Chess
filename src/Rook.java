@@ -48,11 +48,4 @@ public class Rook extends Piece{
         System.out.println("haha");
         return true;
     }
-
-
-
-    @Override
-    public void capture(Piece eatPiece) {
-
-    }
 }

@@ -17,8 +17,4 @@ public class King extends Piece {
         return (deltaX <= 1 && deltaY <= 1);
     }
 
-    @Override
-    public void capture(Piece eatPiece) {
-
-    }
 }

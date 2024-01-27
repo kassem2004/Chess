@@ -54,9 +54,4 @@ public class Queen extends Piece {
 
         return true;
     }
-
-    @Override
-    public void capture(Piece eatPiece) {
-
-    }
 }
