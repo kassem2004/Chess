@@ -1,6 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
-import java.io.File;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class ChessBoard extends JFrame {
 
@@ -8,6 +9,7 @@ public class ChessBoard extends JFrame {
     private static final int CELL_SIZE = 60;
 
     private Piece[][] board;
+    private Piece selectedPiece;
 
     public ChessBoard() {
         // Initialize the board and set layout
@@ -29,12 +31,12 @@ public class ChessBoard extends JFrame {
     }
 
     private void initializePawns() {
-        // Place white pawns
+        // White pawns
         for (int i = 0; i < BOARD_SIZE; i++) {
             board[6][i] = new Pawn(false, 6, i);
         }
 
-        // Place black pawns
+        // Black pawns
         for (int i = 0; i < BOARD_SIZE; i++) {
             board[1][i] = new Pawn(true, 1, i);
         }
@@ -43,8 +45,8 @@ public class ChessBoard extends JFrame {
     private void initializeRooks(){
         board[0][0] = new Rook(true, 0, 0);
         board[0][7] = new Rook(true, 0, 7);
-        board[7][0] = new Rook(false, 0, 0);
-        board[7][7] = new Rook(false, 0, 7);
+        board[7][0] = new Rook(false, 7, 0);
+        board[7][7] = new Rook(false, 7, 7);
     }
 
     private void initializeKnights() {
@@ -80,43 +82,101 @@ public class ChessBoard extends JFrame {
         initializeKings();
     }
 
+    private String getImagePathForPiece(Piece piece) {
+        if (piece instanceof Pawn) {
+            return piece.getColor() ? "Images/Chess_pdt60.png" : "Images/Chess_plt60.png";
+        } else if (piece instanceof Rook) {
+            return piece.getColor() ? "Images/Chess_rdt60.png" : "Images/Chess_rlt60.png";
+        } else if (piece instanceof King) {
+            return piece.getColor() ? "Images/Chess_kdt60.png" : "Images/Chess_klt60.png";
+        } else if (piece instanceof Queen) {
+            return piece.getColor() ? "Images/Chess_qdt60.png" : "Images/Chess_qlt60.png";
+        } else if (piece instanceof Bishop) {
+            return piece.getColor() ? "Images/Chess_bdt60.png" : "Images/Chess_blt60.png";
+        } else if (piece instanceof Knight) {
+            return piece.getColor() ? "Images/Chess_ndt60.png" : "Images/Chess_nlt60.png";
+        }
+        return "";
+    }
+
+    private class CellMouseListener extends MouseAdapter {
+        private final int row;
+        private final int col;
+
+        CellMouseListener(int row, int col) {
+            this.row = row;
+            this.col = col;
+        }
+
+        @Override
+        public void mouseClicked(MouseEvent e) {
+            handleCellClick(row, col);
+        }
+    }
+
+    private void handleCellClick(int row, int col) {
+        if (selectedPiece == null) {
+            // If no piece is selected, select the piece at the clicked position
+            selectedPiece = board[row][col];
+            if (selectedPiece != null) {
+                System.out.println("Selected piece: " + selectedPiece.getClass().getSimpleName() + " at position (" + row + ", " + col + ")");
+            } else {
+                System.out.println("No piece selected at position (" + row + ", " + col + ")");
+            }
+        } else {
+            // If a piece is already selected, check if the destination is a valid move
+            if (selectedPiece.isValidMove(row, col)) {
+                // Perform the move and update the board
+                board[selectedPiece.getX()][selectedPiece.getY()] = null; // Clear the source position
+                board[row][col] = selectedPiece; // Move the piece to the destination
+                selectedPiece.setX(row); // Update the piece's position
+                selectedPiece.setY(col);
+
+                // Refresh the GUI
+                refreshBoardGUI();
+            } else {
+                System.out.println("Invalid move for " + selectedPiece.getClass().getSimpleName() + " to (" + row + ", " + col + ")");
+            }
+
+            // Reset the selected piece
+            selectedPiece = null;
+        }
+    }
+
+    private void refreshBoardGUI() {
+        getContentPane().removeAll();
+        initializeBoardGUI();
+        revalidate();
+        repaint();
+    }
+
     private void initializeBoardGUI() {
         for (int i = 0; i < BOARD_SIZE; i++) {
             for (int j = 0; j < BOARD_SIZE; j++) {
                 JPanel cell = new JPanel();
                 cell.setBackground((i + j) % 2 == 0 ? Color.WHITE : Color.BLUE);
                 cell.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+
+                // Add a MouseListener to each cell
+                cell.addMouseListener(new CellMouseListener(i, j));
+
                 add(cell);
 
                 if (board[i][j] != null) {
-                    String imagePath = "";
-                    if(board[i][j] instanceof Pawn) {
-                        imagePath = board[i][j].getColor() ? "Images/Chess_pdt60.png" : "Images/Chess_plt60.png";
-                    } else if (board[i][j] instanceof Rook) {
-                        imagePath = board[i][j].getColor() ? "Images/Chess_rdt60.png" : "Images/Chess_rlt60.png";
-                    } else if(board[i][j] instanceof King){
-                        imagePath = board[i][j].getColor() ? "Images/Chess_kdt60.png" : "Images/Chess_klt60.png";
-                    } else if(board[i][j] instanceof Queen){
-                        imagePath = board[i][j].getColor() ? "Images/Chess_qdt60.png" : "Images/Chess_qlt60.png";
-                    } else if(board[i][j] instanceof Bishop){
-                        imagePath = board[i][j].getColor() ? "Images/Chess_bdt60.png" : "Images/Chess_blt60.png";
-                    } else if(board[i][j] instanceof Knight){
-                        imagePath = board[i][j].getColor() ? "Images/Chess_ndt60.png" : "Images/Chess_nlt60.png";
-                    }
+                    String imagePath = getImagePathForPiece(board[i][j]);
 
                     try {
                         ImageIcon icon = new ImageIcon(new ImageIcon(imagePath).getImage().getScaledInstance(CELL_SIZE, CELL_SIZE, Image.SCALE_SMOOTH));
-                        JLabel pawnLabel = new JLabel(icon);
+                        JLabel pieceLabel = new JLabel(icon);
 
-                        pawnLabel.setHorizontalAlignment(JLabel.CENTER);
-                        pawnLabel.setVerticalAlignment(JLabel.CENTER);
-                        cell.add(pawnLabel);
+                        pieceLabel.setHorizontalAlignment(JLabel.CENTER);
+                        pieceLabel.setVerticalAlignment(JLabel.CENTER);
+                        cell.add(pieceLabel);
                     } catch (Exception e) {
                         e.printStackTrace();
                         System.err.println("Error loading image: " + imagePath);
                     }
                 }
-
             }
         }
     }

@@ -4,7 +4,13 @@ public class Rook extends Piece{
     }
     @Override
     public boolean isValidMove(int newX, int newY) {
-        return false;
+        int deltaX = newX - this.getX();
+        int deltaY = newY - this.getY();
+        if((deltaX < 0 && deltaY == 0) || (deltaY < 0 && deltaX == 0) || (deltaX > 0 && deltaY == 0) || (deltaY > 0 && deltaX == 0)){
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Override

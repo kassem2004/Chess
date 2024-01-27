@@ -1,28 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a69291ed-e91f-40fe-85fc-bdb79f420669" name="Changes" comment="Initial commit">
-      <change afterPath="$PROJECT_DIR$/Images/Chess_bdt60.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Images/Chess_blt60.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Images/Chess_kdt60.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Images/Chess_klt60.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Images/Chess_ndt60.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Images/Chess_nlt60.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Images/Chess_pdt60.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Images/Chess_plt60.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Images/Chess_qdt60.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Images/Chess_qlt60.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Images/Chess_rdt60.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Images/Chess_rlt60.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Bishop.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ChessBoard.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/King.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Knight.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Pawn.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Piece.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Queen.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Rook.java" afterDir="false" />
+    <list default="true" id="a69291ed-e91f-40fe-85fc-bdb79f420669" name="Changes" comment="Finished GUI of board and initialized all pieces, no functionality yet">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Bishop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Bishop.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ChessBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ChessBoard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/King.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/King.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Knight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Knight.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Pawn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pawn.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Queen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Queen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Rook.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Rook.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,7 +78,14 @@
       <option name="project" value="LOCAL" />
       <updated>1706224924757</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Finished GUI of board and initialized all pieces, no functionality yet">
+      <created>1706279314862</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1706279314862</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -107,6 +101,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="Initial commit" />
+    <MESSAGE value="Finished GUI of board and initialized all pieces, no functionality yet" />
+    <option name="LAST_COMMIT_MESSAGE" value="Finished GUI of board and initialized all pieces, no functionality yet" />
   </component>
 </project>

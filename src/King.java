@@ -4,7 +4,10 @@ public class King extends Piece {
     }
     @Override
     public boolean isValidMove(int newX, int newY) {
-        return false;
+        int deltaX = Math.abs(newX - this.getX());
+        int deltaY = Math.abs(newY - this.getY());
+
+        return (deltaX <= 1 && deltaY <= 1);
     }
 
     @Override

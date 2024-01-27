@@ -4,7 +4,13 @@ public class Bishop extends Piece{
     }
     @Override
     public boolean isValidMove(int newX, int newY) {
-        return false;
+        int deltaX = newX - this.getX();
+        int deltaY = newY - this.getY();
+        if(Math.abs(deltaX) == Math.abs(deltaY)){
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Override

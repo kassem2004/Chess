@@ -4,7 +4,13 @@ public class Knight extends Piece{
     }
     @Override
     public boolean isValidMove(int newX, int newY) {
-        return false;
+        int deltaX = newX - this.getX();
+        int deltaY = newY - this.getY();
+        if((deltaX == -2 && (deltaY == -1 || deltaY == 1)) || (deltaX == 2 && (deltaY == -1 || deltaY == 1)) || (deltaY == -2 && (deltaX == -1 || deltaX == 1)) || (deltaY == 2 && (deltaX == -1 || deltaX == 1))){
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Override
