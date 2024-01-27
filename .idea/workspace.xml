@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a69291ed-e91f-40fe-85fc-bdb79f420669" name="Changes" comment="Changed isValidMove() a bit, completely finished pawn functionality">
+    <list default="true" id="a69291ed-e91f-40fe-85fc-bdb79f420669" name="Changes" comment="Finished rook functionality">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Bishop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Bishop.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Queen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Queen.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Rook.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Rook.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -100,7 +102,14 @@
       <option name="project" value="LOCAL" />
       <updated>1706357437705</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Finished rook functionality">
+      <created>1706378333214</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1706378333214</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -120,15 +129,16 @@
     <MESSAGE value="Implemented basic functionality of all pieces" />
     <MESSAGE value="Added flip board functionality" />
     <MESSAGE value="Changed isValidMove() a bit, completely finished pawn functionality" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changed isValidMove() a bit, completely finished pawn functionality" />
+    <MESSAGE value="Finished rook functionality" />
+    <option name="LAST_COMMIT_MESSAGE" value="Finished rook functionality" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/Rook.java</url>
-          <line>27</line>
-          <properties class="Rook" method="checkPath">
+          <url>file://$PROJECT_DIR$/src/Queen.java</url>
+          <line>25</line>
+          <properties class="Queen" method="checkPath">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
           </properties>

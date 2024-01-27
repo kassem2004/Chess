@@ -26,10 +26,6 @@ public class Rook extends Piece{
 
     // To ensure the rook is not going over a piece
     public boolean checkPath(Piece[][] board, int newX, int newY, int oldX, int oldY) {
-        System.out.println("Oldx " + oldX);
-        System.out.println("Oldy " + oldY);
-        System.out.println("Newx " + newX);
-        System.out.println("Newy " + newY);
         if (newX == oldX) { // If it is moving horizontally
             int step = Integer.compare(newY, oldY); // Check if it's moving left or right
             System.out.println(step);
