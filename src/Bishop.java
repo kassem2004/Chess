@@ -3,9 +3,17 @@ public class Bishop extends Piece{
         super(color, x, y);
     }
     @Override
-    public boolean isValidMove(int newX, int newY) {
+    public boolean isValidMove(Piece[][] board, int newX, int newY) {
         int deltaX = newX - this.getX();
         int deltaY = newY - this.getY();
+
+        // Check if you are eating your own piece
+        if(board[newX][newY] != null) {
+            if (board[newX][newY].getColor() == this.getColor()) {
+                return false;
+            }
+        }
+
         if(Math.abs(deltaX) == Math.abs(deltaY)){
             return true;
         } else {

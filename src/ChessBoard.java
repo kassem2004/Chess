@@ -125,20 +125,18 @@ public class ChessBoard extends JFrame {
             }
         } else {
             // If a piece is already selected, check if the destination is a valid move
-            if (selectedPiece.isValidMove(row, col)) {
+            if (selectedPiece.isValidMove(board, row, col)) {
                 // Perform the move and update the board
                 board[selectedPiece.getX()][selectedPiece.getY()] = null; // Clear the source position
                 board[row][col] = selectedPiece; // Move the piece to the destination
                 selectedPiece.setX(row); // Update the piece's position
                 selectedPiece.setY(col);
 
-                // Refresh the GUI
                 refreshBoardGUI();
             } else {
                 System.out.println("Invalid move for " + selectedPiece.getClass().getSimpleName() + " to (" + row + ", " + col + ")");
             }
 
-            // Reset the selected piece
             selectedPiece = null;
         }
     }
@@ -150,7 +148,7 @@ public class ChessBoard extends JFrame {
                 board[i][j] = board[(BOARD_SIZE - 1) - i][j];
                 board[(BOARD_SIZE - 1) - i][j] = tmp;
 
-                //update the coordinate attributes of the pieces
+                // Update the coordinate attributes of the pieces
                 if (board[i][j] != null) {
                     board[i][j].setX(i);
                     board[i][j].setY(j);
@@ -178,7 +176,6 @@ public class ChessBoard extends JFrame {
                 cell.setBackground((i + j) % 2 == 0 ? Color.WHITE : Color.BLUE);
                 cell.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 
-                // Add a MouseListener to each cell
                 cell.addMouseListener(new CellMouseListener(i, j));
 
                 add(cell);

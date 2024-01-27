@@ -28,7 +28,7 @@ public abstract class Piece {
     }
 
     // Method to check if the piece can move to a new position
-    public abstract boolean isValidMove(int newX, int newY);
+    public abstract boolean isValidMove(Piece[][] board, int newX, int newY);
 
     public abstract void capture(Piece eatPiece);
 
